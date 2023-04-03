@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta, date
 
 users = [
-    {'name': 'Vitalii', 'birthday': datetime(1997, 8, 8)},
     {'name': 'Alice', 'birthday': datetime(1990, 4, 1)},
     {'name': 'Bob', 'birthday': datetime(1985, 3, 15)},
     {'name': 'Charlie', 'birthday': datetime(1995, 4, 2)},
@@ -11,6 +10,7 @@ users = [
 
 def get_birthdays_per_week(users):
     today = date.today()
+    current_year = today.year
     monday = today - timedelta(days=today.weekday())
     sunday = monday + timedelta(days=6)
     
@@ -19,7 +19,7 @@ def get_birthdays_per_week(users):
     birthdays = {}
     for user in users:
         name = user['name']
-        bday = user['birthday'].date()
+        bday = user['birthday'].replace(year=current_year).date()
         if bday >= monday and bday <= sunday:
             weekday = weekdays[bday.weekday()]
             if weekday not in birthdays:
@@ -28,6 +28,3 @@ def get_birthdays_per_week(users):
             
     for weekday, names in birthdays.items():
         print(f"{weekday}: {', '.join(names)}")
-
-if __name__ == '__main__':
-    get_birthdays_per_week(users)
