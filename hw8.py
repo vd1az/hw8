@@ -3,9 +3,9 @@ from datetime import datetime, timedelta, date
 users = [
     {'name': 'Alice', 'birthday': datetime(1990, 4, 1)},
     {'name': 'Bob', 'birthday': datetime(1985, 3, 15)},
-    {'name': 'Charlie', 'birthday': datetime(1995, 4, 2)},
+    {'name': 'Charlie', 'birthday': datetime(1995, 4, 18)},
     {'name': 'David', 'birthday': datetime(1992, 3, 16)},
-    {'name': 'Eve', 'birthday': datetime(1998, 3, 14)}
+    {'name': 'Eve', 'birthday': datetime(1998, 3, 18)}
 ]
 
 def get_birthdays_per_week(users):
@@ -28,3 +28,6 @@ def get_birthdays_per_week(users):
             
     for weekday, names in birthdays.items():
         print(f"{weekday}: {', '.join(names)}")
+        
+if __name__ == "__main__":
+    get_birthdays_per_week(users)
